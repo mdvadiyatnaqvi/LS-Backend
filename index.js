@@ -15,7 +15,7 @@ app.use(cookieParser());
 app.use(cors({ credentials: true }))
 
 app.get("/", (req, res) => {
-    res.json({ message: "LS Backend API is running!" });
+    res.send("Service is running...");
 });
 
 app.listen(PORT, () => {
