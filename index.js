@@ -1,14 +1,15 @@
-const express = require('express')
+import 'dotenv/config';
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
+const PORT = process.env.PORT || 4000;
 const app = express()
 
-app.get('/', (req, res) => {
-    res.status(200).send("Service is running...")
-})
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors({credentials:true}))
 
-const PORT = 5500
-
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-
+app.listen(PORT, ()=>{
+    console.log(`Server is running on http:localhost:${PORT}`);
 })
