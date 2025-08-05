@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "It contains the backend for Login/Signup using JWT auth token and has been developed using MEN!",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start": "nodemon index.js"
   },
