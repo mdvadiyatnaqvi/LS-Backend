@@ -4,14 +4,20 @@ const connectDB = async () => {
     try {
         const mongoURI = process.env.MONGODB_URI;
 
-        const conn = await mongoose.connect(mongoURI);
+        if (!mongoURI) {
+            console.error("MONGODB_URI is not defined in environment variables");
+            console.log("Starting server without database connection...");
+            return null;
+        }
 
-        console.log(`MongoDB Connected!`);
+        const conn = await mongoose.connect(mongoURI);
+        console.log(`MongoDB Connected successfully!`);
         return conn;
     } catch (error) {
         console.error("Error connecting to MongoDB:", error.message);
-        process.exit(1);
+        console.log("Starting server without database connection...");
+        return null;
     }
 };
 
-export default connectDB;
+module.exports = connectDB;
