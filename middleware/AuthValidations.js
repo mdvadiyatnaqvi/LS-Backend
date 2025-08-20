@@ -7,7 +7,7 @@ const signupValidation = (req, res, next) => {
         password: Joi.string().min(4).max(100).required(),
     })
 
-    const { error } = schema.valid(req.body)
+    const { error } = schema.validate(req.body)
     if (error) {
         return res.status(400).json({ message: "Bad Request", error })
     }
@@ -20,7 +20,7 @@ const loginValidation = (req, res, next) => {
         password: Joi.string().min(4).max(100).required(),
     })
 
-    const { error } = schema.valid(req.body)
+    const { error } = schema.validate(req.body)
     if (error) {
         return res.status(400).json({ message: "Bad Request", error })
     }
