@@ -5,6 +5,7 @@ const app = express();
 const connectDB = require('./config/db');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/AuthRoutes');
+const productRoute = require('./routes/ProductRoute');
 
 const PORT = process.env.PORT || 8080;
 
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth', authRoutes);
+app.use('/products', productRoute);
 
 connectDB();
 
